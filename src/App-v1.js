@@ -60,15 +60,15 @@ export default function App() {
         <Search />
         <NumResults movies={movies} />
       </NavBar>
+
       <Main>
         <Box>
           <MovieList movies={movies} />
         </Box>
+
         <Box>
-          <>
-            <WatchedSummary watched={watched} />
-            <WatchedMoviesList watched={watched} />
-          </>
+          <WatchedSummary watched={watched} />
+          <WatchedMoviesList watched={watched} />
         </Box>
       </Main>
     </>
@@ -127,10 +127,12 @@ function Box({ children }) {
       <button className="btn-toggle" onClick={() => setIsOpen((open) => !open)}>
         {isOpen ? "–" : "+"}
       </button>
+
       {isOpen && children}
     </div>
   );
 }
+
 /*
 function WatchedBox() {
   const [watched, setWatched] = useState(tempWatchedData);
@@ -144,6 +146,7 @@ function WatchedBox() {
       >
         {isOpen2 ? "–" : "+"}
       </button>
+
       {isOpen2 && (
         <>
           <WatchedSummary watched={watched} />
@@ -154,6 +157,7 @@ function WatchedBox() {
   );
 }
 */
+
 function MovieList({ movies }) {
   return (
     <ul className="list">
@@ -166,7 +170,7 @@ function MovieList({ movies }) {
 
 function Movie({ movie }) {
   return (
-    <li key={movie.imdbID}>
+    <li>
       <img src={movie.Poster} alt={`${movie.Title} poster`} />
       <h3>{movie.Title}</h3>
       <div>
@@ -221,7 +225,7 @@ function WatchedMoviesList({ watched }) {
 
 function WatchedMovie({ movie }) {
   return (
-    <li key={movie.imdbID}>
+    <li>
       <img src={movie.Poster} alt={`${movie.Title} poster`} />
       <h3>{movie.Title}</h3>
       <div>
